@@ -44,7 +44,7 @@ public class CustomFilterSecurity {
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws  Exception {
 //        //Đây là nơi định nghĩa link nào được phép và ngược lại
 //
-////        http.cors().disable()
+////        http.cors().and() //.disable()
 ////                .csrf().disable()
 ////                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 ////                .and()
@@ -60,7 +60,7 @@ public class CustomFilterSecurity {
 //        http.csrf(AbstractHttpConfigurer::disable)
 //                .cors(AbstractHttpConfigurer::disable)
 //                .authorizeHttpRequests(request -> {
-//                    request.requestMatchers("/login/**", "/restaurant/file/**").permitAll().anyRequest().authenticated();
+//                    request.requestMatchers("/login/**", "/restaurant/file/**", "/menu/file/**").permitAll().anyRequest().authenticated();
 //                });
 //                //.formLogin(Customizer.withDefaults());
 //        http.formLogin(withDefaults());
@@ -77,7 +77,7 @@ public class CustomFilterSecurity {
                 .cors(httpSecurityCorsConfigurer -> httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((requests) -> requests
                         //.requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards", "/user").authenticated()
-                        .requestMatchers("/login/**", "/restaurant/file/**").permitAll()
+                        .requestMatchers("/login/**", "/menu/file/**", "/restaurant/file/**").permitAll()
                         .anyRequest()
                         .authenticated()
                 );
@@ -87,11 +87,6 @@ public class CustomFilterSecurity {
         http.addFilterBefore(customJwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     @Bean
@@ -106,5 +101,10 @@ public class CustomFilterSecurity {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
         return source;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

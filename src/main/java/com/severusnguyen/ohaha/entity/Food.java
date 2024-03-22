@@ -21,7 +21,10 @@ public class Food {
     private String timeShip;
 
     @Column(name = "price")
-    private double price;
+    private String price;
+
+    @Column(name = "is_freeship")
+    private boolean isFreeShip;
 
     @ManyToOne
     @JoinColumn(name = "cate_id")
@@ -39,14 +42,6 @@ public class Food {
 
     public Set<OrderItem> getListOrderItem() {
         return listOrderItem;
-    }
-
-    public void setListOrderItem(Set<OrderItem> listOrderItem) {
-        this.listOrderItem = listOrderItem;
-    }
-
-    public void setListRatingFood(Set<RatingFood> listRatingFood) {
-        this.listRatingFood = listRatingFood;
     }
 
     public int getId() {
@@ -81,12 +76,20 @@ public class Food {
         this.timeShip = timeShip;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
+    }
+
+    public boolean isFreeShip() {
+        return isFreeShip;
+    }
+
+    public void setFreeShip(boolean freeShip) {
+        isFreeShip = freeShip;
     }
 
     public Category getCategory() {
@@ -95,5 +98,13 @@ public class Food {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public void setListRatingFood(Set<RatingFood> listRatingFood) {
+        this.listRatingFood = listRatingFood;
+    }
+
+    public void setListOrderItem(Set<OrderItem> listOrderItem) {
+        this.listOrderItem = listOrderItem;
     }
 }

@@ -20,7 +20,7 @@ public class Category {
     private Date createDate;
 
     @OneToMany(mappedBy = "category")
-    private Set<Food> foodList;
+    private Set<Food> listFood;
 
     @OneToMany(mappedBy = "category")
     private Set<MenuRestaurant> listMenuRestaurant;
@@ -33,12 +33,12 @@ public class Category {
         this.listMenuRestaurant = listMenuRestaurant;
     }
 
-    public Set<Food> getFoodList() {
-        return foodList;
+    public Set<Food> getListFood() {
+        return listFood;
     }
 
-    public void setFoodList(Set<Food> foodList) {
-        this.foodList = foodList;
+    public void setListFood(Set<Food> listFood) {
+        this.listFood = listFood;
     }
 
     public int getId() {
