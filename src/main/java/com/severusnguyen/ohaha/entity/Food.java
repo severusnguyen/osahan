@@ -26,6 +26,9 @@ public class Food {
     @Column(name = "is_freeship")
     private boolean isFreeShip;
 
+    @Column(name = "description")
+    private String desc;
+
     @ManyToOne
     @JoinColumn(name = "cate_id")
     private Category category;
@@ -98,6 +101,14 @@ public class Food {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public void setListRatingFood(Set<RatingFood> listRatingFood) {

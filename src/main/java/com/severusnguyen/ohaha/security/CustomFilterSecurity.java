@@ -81,8 +81,6 @@ public class CustomFilterSecurity {
                         .anyRequest()
                         .authenticated()
                 );
-//        http.formLogin(withDefaults());
-//        http.httpBasic(withDefaults());
 
         http.addFilterBefore(customJwtFilter, UsernamePasswordAuthenticationFilter.class);
 

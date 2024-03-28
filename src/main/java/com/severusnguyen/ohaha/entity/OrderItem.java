@@ -9,7 +9,7 @@ import java.util.Date;
 public class OrderItem {
 
     @EmbeddedId
-    KeyOrderItem keys;
+    KeyOrderItem keyOrderItem;
 
     @ManyToOne
     @JoinColumn(name = "order_id", insertable = false, updatable = false)
@@ -22,12 +22,12 @@ public class OrderItem {
     @Column(name = "create_date")
     private Date createDate;
 
-    public KeyOrderItem getKeys() {
-        return keys;
+    public KeyOrderItem getKeyOrderItem() {
+        return keyOrderItem;
     }
 
-    public void setKeys(KeyOrderItem keys) {
-        this.keys = keys;
+    public void setKeyOrderItem(KeyOrderItem keyOrderItem) {
+        this.keyOrderItem = keyOrderItem;
     }
 
     public Orders getOrders() {

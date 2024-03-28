@@ -38,11 +38,12 @@ create table food(
     image text,
     time_ship varchar(10),
     price decimal,
+    is_freeship boolean default false,
     cate_id int,
+
 
     primary key(id)
 );
-
 create table rating_restaurant(
 	id int auto_increment,
     user_id int,
@@ -124,18 +125,36 @@ alter table menu_restaurant add constraint fk_menurestaurant_cate_id foreign key
 alter table menu_restaurant add constraint fk_menurestaurant_res_id foreign key(res_id) references restaurant(id);
 alter table promo add constraint fk_promo_res_id foreign key(res_id) references restaurant(id);
 
+/*alter table food add column is_freeship bool default false;*/
+alter table food add column description text;
+
 insert into roles(role_name) values('ROLE_ADMIN');
 insert into roles(role_name) values('ROLE_USER');
 
 insert into users(user_name, password, fullname, role_id) values("admin@gmail.com", "123456", "Admin", 1);
 insert into users(user_name, password, fullname, role_id) values("severus@gmail.com", "123456", "Severus", 2);
 
+
+
 select* from users;
 
-select* from roles
+select* from roles;
 
+select* from restaurant;
 
+select* from rating_restaurant;
 
+select* from menu_restaurant;
+
+select* from category;
+
+select* from food;
+
+select* from orders;
+
+select* from order_item;
+
+use ohaha;
 
 
 

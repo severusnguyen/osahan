@@ -15,5 +15,6 @@ public interface RestaurantServiceImp {
                               @RequestParam String open_date);
 
     List<RestaurantDTO> getHomePageRestaurant();
+    RestaurantDTO getDetailRestaurant(int id);
 
 }
